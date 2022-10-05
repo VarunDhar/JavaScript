@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer Practice</title>
+</head>
+<style>
+    #timer{
+        text-align: center;
+        font-size: 15px;
+        border: 5px;
+        padding-right: 40px;
+        padding-left: 40px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        margin: 40px;
+        background-color: tomato;
+        color: blanchedalmond;
+        border-color: crimson;
+        font-style: italic;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        border-radius: 20px;
+        display:inline-block;
+    }
+    #ShowTime{
+        color: blanchedalmond;
+        background-color: black;
+        align-items: center;
+        padding: 15px;
+        border-radius: 30px;
+    }
+</style>
+<body>
+    <center><span id="timer">00:00:00</span></center>
+    <br>
+    <center><button id="ShowTime" onclick="startTimer()">Start/Stop</button></center>
+<script>
+    let btn= document.getElementById('ShowTime');
+    let val;
+    function startTimer(){
+        console.log("on click");
+        let spann= document.getElementById('timer');
+        if(spann.innerHTML=="00:00:00"){
+            let currdate= new Date();
+            currdate.setHours(0), currdate.setMinutes(0), currdate.setSeconds(0);
+            function incrementTime(cdate){
+                cdate.setSeconds(cdate.getSeconds()+1);
+                spann.innerHTML=cdate.getHours()+":"+cdate.getMinutes()+":"+cdate.getSeconds();
+            }
+            val=setInterval(incrementTime,1000,currdate);
+        }
+        else{
+            clearInterval(val);
+            document.getElementById('timer').innerHTML="00:00:00";
+        }
+    }
+</script>
+</body>
+</html>
